@@ -2,23 +2,22 @@ package myjavanet;
 
 public class MyResponse implements Response {
 
-    private Task task;
+    private Object output;
     private long time;
 
     MyResponse(Task task) {
-        this.task = task;
+        long start = System.nanoTime();
+        Object output = task.execute();
+        time = System.nanoTime()-start;
     }
 
     @Override
     public Object output() {
-        long start = System.nanoTime();
-        Object output = task.execute();
-        time = System.nanoTime()-start;
         return output;
     }
 
     @Override
-    public long runtime() {
+    public long executionTime() {
         return time;
     }
 }
