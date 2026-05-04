@@ -11,6 +11,7 @@ public class Server {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
                 Socket socket = serverSocket.accept();
+                System.out.println("Client connected!");
 
                 new Thread(new ClientHandler(socket) );
             }

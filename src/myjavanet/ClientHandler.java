@@ -13,7 +13,8 @@ public class ClientHandler implements Runnable {
 
     @Override
     public void run() {
-        try (ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream())) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
             String name = in.readUTF();

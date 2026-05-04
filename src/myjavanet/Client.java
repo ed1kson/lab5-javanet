@@ -13,16 +13,20 @@ public class Client {
         String hostname = "localhost";
         int port = 8080;
         try (Socket socket = new Socket(hostname, port)) {
+            System.out.println("Connected!");
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-            String classname = "FactorialTask";
+            System.out.println("streams connected!");
+
+            String classname = "myjavanet.FactorialTask";
             byte[] classBytes = Files.readAllBytes(Paths.get("out/production/lab5-javanet/myjavanet/FactorialTask.class"));
 
             out.writeUTF(classname);
             out.writeInt(classBytes.length);
             out.write(classBytes);
             out.writeObject(new FactorialTask(20));
+            System.out.println("Class loaded!");
 
             Response response = (Response) in.readObject();
             System.out.println("Result: " + response.output());
