@@ -13,7 +13,7 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connected!");
 
-                new Thread(new ClientHandler(socket) );
+                new Thread(new ClientHandler(socket) ).start();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

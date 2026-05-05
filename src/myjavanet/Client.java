@@ -15,6 +15,7 @@ public class Client {
         try (Socket socket = new Socket(hostname, port)) {
             System.out.println("Connected!");
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+            out.flush();
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
             System.out.println("streams connected!");
@@ -25,7 +26,7 @@ public class Client {
             out.writeUTF(classname);
             out.writeInt(classBytes.length);
             out.write(classBytes);
-            out.writeObject(new FactorialTask(20));
+            out.writeObject(new FactorialTask(25));
             System.out.println("Class loaded!");
 
             Response response = (Response) in.readObject();
@@ -34,9 +35,17 @@ public class Client {
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 }
+
+
+
+
+
+
+
+

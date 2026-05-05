@@ -15,8 +15,10 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+            out.flush();
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
+            System.out.println("asdkfjsk");
             String name = in.readUTF();
             int len = in.readInt();
             byte[] bytes = new byte[len];

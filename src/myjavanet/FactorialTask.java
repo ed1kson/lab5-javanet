@@ -1,6 +1,8 @@
 package myjavanet;
 
 
+import java.math.BigInteger;
+
 public class FactorialTask implements Task {
     int num;
 
@@ -13,10 +15,11 @@ public class FactorialTask implements Task {
         return factorial(num);
     }
 
-    public long factorial (long n) {
-        if ( n <= 1 ) {
-            return 1;
+    public BigInteger factorial (long n) {
+        BigInteger res = BigInteger.ONE;
+        for (int i = 2; i <= n; i++) {
+            res = res.multiply(BigInteger.valueOf(i));
         }
-        return n*factorial(n);
+        return res;
     }
 }
