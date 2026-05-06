@@ -1,4 +1,4 @@
-package myjavanet;
+package mytcp;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,13 +20,15 @@ public class Client {
 
             System.out.println("streams connected!");
 
+            String path = "src/resources/FactorialTask.class";
+//            String path2 = "out/production/lab5-javanet/myjavanet/FactorialTask.class";
             String classname = "myjavanet.FactorialTask";
-            byte[] classBytes = Files.readAllBytes(Paths.get("out/production/lab5-javanet/myjavanet/FactorialTask.class"));
+            byte[] classBytes = Files.readAllBytes(Paths.get(path));
 
             out.writeUTF(classname);
             out.writeInt(classBytes.length);
             out.write(classBytes);
-            out.writeObject(new FactorialTask(25));
+            out.writeObject(new FactorialTaskA(25));
             System.out.println("Class loaded!");
 
             Response response = (Response) in.readObject();

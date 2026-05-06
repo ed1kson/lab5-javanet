@@ -1,4 +1,4 @@
-package myjavanet;
+package mytcp;
 
 public class MyResponse implements Response {
 
@@ -7,7 +7,7 @@ public class MyResponse implements Response {
 
     MyResponse(Task task) {
         long start = System.nanoTime();
-        Object output = task.execute();
+        output = task.execute();
         time = System.nanoTime()-start;
     }
 

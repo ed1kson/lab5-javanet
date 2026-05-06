@@ -1,8 +1,7 @@
-package myjavanet;
+package mytcp;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.Buffer;
 
 public class ClientHandler implements Runnable {
     private Socket socket;
@@ -18,7 +17,6 @@ public class ClientHandler implements Runnable {
             out.flush();
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-            System.out.println("asdkfjsk");
             String name = in.readUTF();
             int len = in.readInt();
             byte[] bytes = new byte[len];
@@ -38,7 +36,7 @@ public class ClientHandler implements Runnable {
             Response response = new MyResponse(task);
 
             out.writeObject(response);
-
+            socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

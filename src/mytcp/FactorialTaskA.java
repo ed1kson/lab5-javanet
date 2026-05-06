@@ -1,12 +1,12 @@
-package myjavanet;
+package mytcp;
 
 
 import java.math.BigInteger;
 
-public class FactorialTask implements Task {
+public class FactorialTaskA implements Task {
     int num;
 
-    public FactorialTask(int n) {
+    public FactorialTaskA(int n) {
         num = n;
     }
 
