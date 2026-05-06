@@ -1,7 +1,8 @@
-package mytcp;
+package myjavanet;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.Buffer;
 
 public class ClientHandler implements Runnable {
     private Socket socket;

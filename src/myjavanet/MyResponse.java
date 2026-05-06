@@ -1,4 +1,4 @@
-package mytcp;
+package myjavanet;
 
 public class MyResponse implements Response {
 

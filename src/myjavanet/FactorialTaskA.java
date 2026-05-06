@@ -1,4 +1,4 @@
-package mytcp;
+package myjavanet;
 
 
 import java.math.BigInteger;
